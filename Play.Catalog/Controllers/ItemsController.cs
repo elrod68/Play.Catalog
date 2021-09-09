@@ -13,13 +13,6 @@ namespace Play.Catalog.Controllers
     [Route("Items")]
     public class ItemsController:ControllerBase
     {
-        //private static readonly List<ItemDto> items = new()
-        //{
-        //    new ItemDto(Guid.NewGuid(), "Potion", "Restores a small amount of HP", 5, DateTimeOffset.UtcNow),
-        //    new ItemDto(Guid.NewGuid(), "Antidote", "Cures poison", 7, DateTimeOffset.UtcNow),
-        //    new ItemDto(Guid.NewGuid(), "Bronze sword", "Just a bronze sword", 20, DateTimeOffset.UtcNow)
-        //};
-
         private readonly ItemsRepository itemsRepository = new();
 
         [HttpGet]

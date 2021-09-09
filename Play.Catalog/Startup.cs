@@ -27,11 +27,11 @@ namespace Play.Catalog
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers(options =>
-            {
-                options.SuppressAsyncSuffixInActionNames = false;
-            });
-
+            //services.AddControllers(options =>
+            //{
+            //    options.SuppressAsyncSuffixInActionNames = false;
+            //});
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Play.Catalog", Version = "v1" });
