@@ -27,6 +27,7 @@ namespace Play.Catalog
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddControllers();
             //services.AddControllers(options =>
             //{
             //    options.SuppressAsyncSuffixInActionNames = false;
