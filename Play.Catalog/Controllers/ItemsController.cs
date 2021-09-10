@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Play.Catalog.Service.Dtos;
 using Play.Catalog.Entities;
-using Play.Catalog.Repositories;
+using Play.Common.Repositories;
 
 namespace Play.Catalog.Service.Controllers
 {

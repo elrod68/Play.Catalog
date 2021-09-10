@@ -4,10 +4,10 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
-using Play.Catalog.Entities;
-using Play.Catalog.Settings;
+using Play.Common.Entities;
+using Play.Common.Settings;
 
-namespace Play.Catalog.Repositories
+namespace Play.Common.Repositories
 {
     public static class Extensions
     {
