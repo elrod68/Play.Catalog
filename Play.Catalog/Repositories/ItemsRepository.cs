@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Play.Catalog.Repositories
 {
-    public class ItemsRepository
+    public class ItemsRepository : IItemsRepository
     {
         private const string collectionName = "items";
 
@@ -15,10 +15,10 @@ namespace Play.Catalog.Repositories
 
         private readonly FilterDefinitionBuilder<Item> filterBuilder = Builders<Item>.Filter;
 
-        public ItemsRepository()
+        public ItemsRepository(IMongoDatabase database)
         {
-            var mongoClient = new MongoClient("mongodb://host.docker.internal:27017");
-            var database = mongoClient.GetDatabase("Catalog");
+            //var mongoClient = new MongoClient("mongodb://host.docker.internal:27017");
+            //var database = mongoClient.GetDatabase("Catalog");
             dbCollection = database.GetCollection<Item>(collectionName);
         }
 
@@ -29,7 +29,7 @@ namespace Play.Catalog.Repositories
 
         public async Task<Item> GetAsync(Guid id)
         {
-            FilterDefinition<Item> filter = filterBuilder.Eq(entity => entity.Id,id);
+            FilterDefinition<Item> filter = filterBuilder.Eq(entity => entity.Id, id);
             return await dbCollection.Find(filter).FirstOrDefaultAsync();
         }
 
