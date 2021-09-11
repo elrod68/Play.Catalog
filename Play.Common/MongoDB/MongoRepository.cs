@@ -1,23 +1,19 @@
-﻿using MongoDB.Driver;
-using Play.Common.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using MongoDB.Driver;
 
-namespace Play.Common.Repositories
+namespace Play.Common.MongoDB
 {
-    public class MongoRepository<T> : IRepository<T> where T:IEntity
+
+    public class MongoRepository<T> : IRepository<T> where T : IEntity
     {
         private readonly IMongoCollection<T> dbCollection;
-
         private readonly FilterDefinitionBuilder<T> filterBuilder = Builders<T>.Filter;
 
         public MongoRepository(IMongoDatabase database, string collectionName)
         {
-            //var mongoClient = new MongoClient("mongodb://host.docker.internal:27017");
-            //var database = mongoClient.GetDatabase("Catalog");
             dbCollection = database.GetCollection<T>(collectionName);
         }
 
@@ -44,13 +40,21 @@ namespace Play.Common.Repositories
 
         public async Task CreateAsync(T entity)
         {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
             await dbCollection.InsertOneAsync(entity);
         }
 
         public async Task UpdateAsync(T entity)
         {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
             FilterDefinition<T> filter = filterBuilder.Eq(existingEntity => existingEntity.Id, entity.Id);
             await dbCollection.ReplaceOneAsync(filter, entity);
         }
@@ -60,6 +64,5 @@ namespace Play.Common.Repositories
             FilterDefinition<T> filter = filterBuilder.Eq(entity => entity.Id, id);
             await dbCollection.DeleteOneAsync(filter);
         }
-
     }
 }

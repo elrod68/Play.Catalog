@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Play.Common.Entities
+namespace Play.Common
 {
     public interface IEntity
     {
