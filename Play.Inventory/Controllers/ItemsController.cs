@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Play.Common.Repositories;
+using Play.Common;
 using Play.Inventory.Clients;
 using Play.Inventory.Dtos;
 using Play.Inventory.Entities;
